@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaga Eyang — Perlindungan penipuan untuk orang tua, lewat WhatsApp</title>
+<meta name="description" content="Orang tua cukup meneruskan pesan mencurigakan ke WhatsApp Jaga Eyang. Kami periksa dan balas kurang dari 30 menit — dan kalau berbahaya, Anda langsung diberi tahu. Rp 49.000/bulan, garansi 14 hari.">
+<meta name="theme-color" content="#fbf3f0">
+<meta name="color-scheme" content="only light">
+
+<!-- Open Graph: WhatsApp link preview is the primary share surface -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jagaeyang.com/">
+<meta property="og:title" content="Jaga Eyang — Orang tua aman dari penipu, tanpa aplikasi baru">
+<meta property="og:description" content="Mereka dulu menjaga kita — sekarang giliran kita. Orang tua meneruskan pesan mencurigakan, kami periksa kurang dari 30 menit. Kalau berbahaya, Anda langsung diberi tahu. Rp 49rb/bulan, garansi 14 hari.">
+<meta property="og:image" content="https://jagaeyang.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<link rel="icon" type="image/png" sizes="192x192" href="logo-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Cloudflare Web Analytics: aktifkan lewat dashboard Pages → Metrics (auto-inject, tidak perlu skrip di sini) -->
+
+<style>
+:root{
+  --ink:#33221d;
+  --ink-soft:#6b544c;
+  --terra:#c05b45;
+  --terra-deep:#a3452f;
+  --pink:#f2b6ba;
+  --pink-soft:#f9e4e3;
+  --bg:#fbf3f0;
+  --card:#ffffff;
+  --wa:#1fa855;
+  --wa-deep:#128c46;
+  --bubble-out:#dcf8c6;
+  --bubble-in:#ffffff;
+  --chat-bg:#ece5dd;
+  --danger:#c0392b;
+  --warn:#b97a12;
+  --safe:#1f8a4c;
+  --radius:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3.display{font-family:'Fraunces',serif;font-weight:600;line-height:1.12;letter-spacing:-0.01em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:50;background:rgba(251,243,240,.88);backdrop-filter:blur(10px);border-bottom:1px solid rgba(192,91,69,.14)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1120px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;text-decoration:none}
+.brand img{width:38px;height:38px}
+.nav-links{display:flex;gap:24px;align-items:center;font-size:.92rem;font-weight:600}
+.nav-links a{text-decoration:none;color:var(--ink-soft)}
+.nav-links a:hover{color:var(--terra)}
+.nav-links a.btn-terra,.nav-links a.btn-terra:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:999px;font-weight:700;font-size:.98rem;text-decoration:none;transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;border:none}
+.btn:focus-visible{outline:3px solid var(--terra);outline-offset:2px}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 6px 18px rgba(31,168,85,.32)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(31,168,85,.38)}
+.btn-sm{padding:10px 18px;font-size:.88rem}
+.btn-outline{background:#fff;color:var(--terra-deep);border:2px solid var(--terra);box-shadow:0 4px 14px rgba(192,91,69,.12)}
+.btn-outline:hover{transform:translateY(-2px);background:var(--pink-soft)}
+.btn-terra{background:var(--terra);color:#fff;box-shadow:0 6px 18px rgba(192,91,69,.3)}
+.btn-terra:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(192,91,69,.36)}
+.pay-steps{margin-top:14px;text-align:left}
+.pay-step{display:flex;align-items:center;gap:12px}
+.pay-num{flex:none;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center}
+.pay-num.n2{background:#fff;border:2px solid var(--terra);color:var(--terra-deep)}
+.pay-connector{height:16px;border-left:2px dotted var(--terra);margin:4px 0 4px 12px}
+.pay-desc{font-size:.9rem;color:var(--ink-soft);line-height:1.5}
+.pay-desc strong{color:var(--ink)}
+.ask-first{display:inline-block;margin-top:12px;font-size:.86rem;font-weight:700;color:var(--terra-deep)}
+.chat-ic{width:19px;height:19px;flex:none}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 0 40px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--pink-soft);color:var(--terra-deep);font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:22px}
+.hero h1{font-size:clamp(2.3rem,4.6vw,3.5rem);margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--terra)}
+.hero p.lede{font-size:1.12rem;color:var(--ink-soft);max-width:34em;margin-bottom:28px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.price-note{font-size:.9rem;color:var(--ink-soft)}
+.price-note strong{color:var(--ink)}
+.guarantee{display:flex;align-items:flex-start;gap:9px;font-size:.9rem;color:var(--ink-soft);margin-top:8px;max-width:34em}
+.guarantee svg{width:18px;height:18px;flex:none;color:var(--terra);margin-top:2px}
+.official-num{margin-top:14px;font-size:.88rem;color:var(--ink-soft);background:var(--pink-soft);display:inline-block;padding:8px 14px;border-radius:12px}
+.official-num strong{color:var(--terra-deep);letter-spacing:.02em}
+
+/* ---------- phone / chat mockup (netral — bukan trade dress WhatsApp) ---------- */
+.phone{
+  width:330px;max-width:100%;
+  background:#111;border-radius:38px;padding:10px;
+  box-shadow:0 24px 60px rgba(51,34,29,.28), 0 4px 14px rgba(51,34,29,.14);
+  margin:0 auto;
+}
+.phone-screen{background:var(--chat-bg);border-radius:30px;overflow:hidden;display:flex;flex-direction:column;height:560px}
+.wa-status{background:#fff;font-size:.62rem;color:#555;display:flex;justify-content:space-between;padding:6px 16px 0;font-weight:600}
+.wa-head{background:#fff;display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid #eee}
+.wa-head .back{color:#444;font-size:1.1rem;line-height:1}
+.wa-ava{width:34px;height:34px;border-radius:50%;background:var(--pink-soft);display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none}
+.wa-ava img{width:100%;height:100%;object-fit:cover}
+.wa-name{font-weight:700;font-size:.88rem}
+.wa-sub{font-size:.68rem;color:#888;line-height:1}
+.wa-icons{margin-left:auto;color:#555;display:flex;gap:14px;font-size:1rem}
+.wa-chat{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:9px;overflow:hidden;background-image:radial-gradient(rgba(192,91,69,.05) 1px, transparent 1px);background-size:14px 14px}
+.bubble{max-width:82%;padding:8px 11px;border-radius:10px;font-size:.78rem;line-height:1.45;box-shadow:0 1px 1px rgba(0,0,0,.08);position:relative}
+.b-out{background:var(--bubble-out);align-self:flex-end;border-top-right-radius:2px}
+.b-in{background:var(--bubble-in);align-self:flex-start;border-top-left-radius:2px}
+.b-time{display:block;font-size:.6rem;color:#8a9188;text-align:right;margin-top:3px}
+.fwd{display:flex;align-items:center;gap:4px;font-size:.65rem;color:#8a9188;font-style:italic;margin-bottom:3px}
+.fwd svg{width:11px;height:11px;fill:#8a9188}
+.b-link{color:#0b74c4;word-break:break-all}
+.tag-line{font-weight:800;font-size:.8rem;margin-bottom:2px;display:block}
+.tag-bahaya{color:var(--danger)}
+.tag-hati{color:var(--warn)}
+.tag-aman{color:var(--safe)}
+.b-list{margin:6px 0 0;padding-left:16px;font-size:.74rem;color:#333}
+.b-list li{margin-bottom:3px}
+.wa-input{background:transparent;display:flex;align-items:center;gap:8px;padding:8px 10px}
+.wa-field{flex:1;background:#fff;border-radius:999px;padding:9px 14px;font-size:.78rem;color:#999;display:flex;align-items:center;gap:8px}
+.wa-mic{width:38px;height:38px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;flex:none}
+.wa-mic svg{width:17px;height:17px;fill:#fff}
+
+/* hero two-phone demo — STATIC: percakapan sudah lengkap sejak detik pertama */
+.hero-demo{display:flex;align-items:center;justify-content:center;gap:10px}
+.demo-col{display:flex;flex-direction:column;align-items:center}
+.phone-hero{width:262px}
+.phone-hero .phone-screen{height:472px}
+.phone-hero .bubble{font-size:.73rem}
+.demo-cap{margin-top:12px;font-size:.82rem;font-weight:700;color:var(--ink-soft)}
+.demo-arrow{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--terra);flex:none}
+.demo-arrow svg{width:34px;height:34px}
+.demo-arrow span{font-size:.68rem;font-weight:700;color:var(--terra-deep);white-space:nowrap}
+
+/* lockscreen phone */
+.phone-lock{width:238px}
+.phone-lock .phone-screen{height:472px}
+.lock-screen{background:linear-gradient(165deg,#3b2a3f 0%, #6d3f4b 55%, #b06a55 100%);display:flex;flex-direction:column;align-items:center;position:relative}
+.lock-status{width:100%;display:flex;justify-content:space-between;padding:8px 16px 0;font-size:.62rem;color:rgba(255,255,255,.85);font-weight:600}
+.lock-clock{font-size:2.9rem;font-weight:300;color:#fff;margin-top:44px;letter-spacing:.01em;line-height:1}
+.lock-date{font-size:.82rem;color:rgba(255,255,255,.85);margin-top:6px;font-weight:500}
+.lock-notif{margin:26px 12px 0;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-radius:16px;padding:11px 13px;box-shadow:0 8px 26px rgba(0,0,0,.28);width:calc(100% - 24px)}
+.notif-head{display:flex;justify-content:space-between;align-items:center;font-size:.58rem;color:#8a8a8a;font-weight:700;letter-spacing:.04em;margin-bottom:5px}
+.notif-app{display:flex;align-items:center;gap:5px}
+.notif-app svg{width:13px;height:13px}
+.notif-title{font-size:.78rem;font-weight:800;color:#1c1c1c}
+.notif-body{font-size:.73rem;color:#3a3a3a;line-height:1.45;margin-top:2px}
+.lock-hint{margin-top:auto;margin-bottom:16px;font-size:.62rem;color:rgba(255,255,255,.7)}
+@media (max-width:1060px){
+  .phone-hero{width:242px}.phone-lock{width:220px}
+}
+@media (max-width:560px){
+  .hero-demo{flex-direction:column;gap:18px}
+  .demo-arrow{flex-direction:row}
+  .demo-arrow svg{transform:rotate(90deg)}
+  .phone-hero,.phone-lock{width:262px}
+}
+
+/* ---------- stats strip ---------- */
+.stats{border-top:1px solid rgba(192,91,69,.14);border-bottom:1px solid rgba(192,91,69,.14);background:#fff}
+.stats-in{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;padding:34px 24px 26px;max-width:1120px;margin:0 auto}
+.stat b{display:block;font-family:'Fraunces',serif;font-size:1.65rem;font-weight:700;color:var(--terra-deep);line-height:1.15;margin-bottom:6px}
+.stat span{font-size:.9rem;color:var(--ink-soft)}
+.stats-src{max-width:1120px;margin:0 auto;padding:0 24px 20px;font-size:.7rem;color:#a08b84}
+
+/* ---------- sections ---------- */
+section{padding:76px 0}
+.sec-head{max-width:620px;margin-bottom:48px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head h2{font-size:clamp(1.7rem,3.2vw,2.5rem);margin-bottom:14px}
+.sec-head p{color:var(--ink-soft);font-size:1.05rem}
+.kicker{font-weight:800;font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--terra);display:block;margin-bottom:12px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:var(--card);border-radius:var(--radius);padding:26px 22px;border:1px solid rgba(192,91,69,.12);box-shadow:0 8px 24px rgba(51,34,29,.05)}
+.step-num{width:40px;height:40px;border-radius:12px;background:var(--pink-soft);color:var(--terra-deep);font-family:'Fraunces',serif;font-weight:700;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.step h3{font-size:1.02rem;font-weight:700;margin-bottom:8px}
+.step p{font-size:.9rem;color:var(--ink-soft)}
+.steps-note{margin-top:26px;text-align:center;color:var(--ink-soft);font-size:.98rem}
+.steps-note strong{color:var(--terra-deep)}
+
+/* verdict cards */
+.verdicts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+.verdict{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(51,34,29,.08);box-shadow:0 10px 30px rgba(51,34,29,.06)}
+.verdict-top{padding:20px 22px 16px;border-bottom:1px dashed rgba(51,34,29,.12)}
+.pill{display:inline-block;padding:5px 13px;border-radius:999px;font-weight:800;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px}
+.pill-bahaya{background:#fdeae7;color:var(--danger)}
+.pill-hati{background:#fdf3e0;color:var(--warn)}
+.pill-aman{background:#e6f6ec;color:var(--safe)}
+.verdict-top p{font-size:.9rem;color:var(--ink-soft)}
+.mini-chat{background:var(--chat-bg);padding:16px 14px;display:flex;flex-direction:column;gap:8px;min-height:250px}
+.mini-chat .bubble{font-size:.76rem}
+
+/* screenshot-in-bubble */
+.b-img{padding:5px 5px 7px}
+.b-img .b-time{padding-right:6px}
+.shot{border-radius:7px;overflow:hidden;border:1px solid rgba(0,0,0,.1);background:#ece5dd;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.shot-bar{background:#075e54;color:#fff;font-size:.66rem;font-weight:700;display:flex;align-items:center;gap:5px;padding:6px 8px}
+.shot-bar .check{width:12px;height:12px;fill:#7fd4f5;flex:none}
+.shot-bar em{font-style:normal;font-weight:500;font-size:.56rem;color:rgba(255,255,255,.75);margin-left:auto}
+.shot-chat{padding:9px 8px 11px;background-image:radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px);background-size:10px 10px}
+.shot-msg{background:#fff;border-radius:8px;border-top-left-radius:2px;padding:7px 9px;font-size:.68rem;line-height:1.45;max-width:92%;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.shot-cap{display:block;font-size:.74rem;padding:6px 6px 0}
+
+/* payer section */
+.payer{background:linear-gradient(180deg,#fff 0%, var(--pink-soft) 140%);border-top:1px solid rgba(192,91,69,.1);border-bottom:1px solid rgba(192,91,69,.1)}
+.payer-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.payer-list{list-style:none;display:flex;flex-direction:column;gap:18px;margin-top:26px}
+.payer-list li{display:flex;gap:14px;align-items:flex-start}
+.payer-list .dot{width:34px;height:34px;border-radius:10px;background:#fff;border:1px solid rgba(192,91,69,.25);display:flex;align-items:center;justify-content:center;flex:none;color:var(--terra)}
+.payer-list .dot svg{width:17px;height:17px}
+.payer-list h4{font-size:1rem;font-weight:700;margin-bottom:2px}
+.payer-list p{font-size:.9rem;color:var(--ink-soft)}
+.payer-phones{display:flex;gap:18px;justify-content:center}
+.payer-phones .phone{width:265px}
+.payer-phones .phone-screen{height:430px}
+.phone-cap{text-align:center;font-size:.82rem;color:var(--ink-soft);margin-top:12px;font-weight:600}
+
+/* benefit / impact */
+.benefit{background:var(--bg)}
+.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:14px}
+.benefit-card{background:var(--card);border-radius:var(--radius);padding:30px 26px;border:1px solid rgba(192,91,69,.12);box-shadow:0 10px 30px rgba(51,34,29,.05)}
+.benefit-ic{width:52px;height:52px;border-radius:14px;background:var(--pink-soft);color:var(--terra-deep);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.benefit-ic svg{width:26px;height:26px}
+.benefit-card h3{font-size:1.08rem;font-weight:700;margin-bottom:10px;line-height:1.3}
+.benefit-card p{font-size:.92rem;color:var(--ink-soft)}
+.benefit-stat{max-width:760px;margin:34px auto 0;text-align:center;font-size:.98rem;color:var(--ink-soft);background:var(--pink-soft);border-radius:16px;padding:20px 26px}
+.benefit-stat strong{color:var(--terra-deep)}
+.benefit-stat em{display:block;margin-top:8px;font-style:italic;color:var(--ink);font-size:.92rem}
+.benefit-stat .src{font-size:.8rem;color:#a08b84}
+@media (max-width:960px){.benefit-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto 14px}}
+
+/* pricing */
+.pricing-card{max-width:560px;margin:0 auto;background:var(--card);border-radius:28px;border:2px solid var(--terra);box-shadow:0 24px 60px rgba(192,91,69,.16);padding:46px 44px;text-align:center;position:relative}
+.pricing-card .price{font-family:'Fraunces',serif;font-size:clamp(2.6rem,5vw,3.4rem);font-weight:700;color:var(--terra-deep);line-height:1}
+.pricing-card .per{font-size:1rem;color:var(--ink-soft);font-family:'Plus Jakarta Sans',sans-serif;font-weight:600}
+.pricing-card ul{list-style:none;text-align:left;margin:28px auto 24px;max-width:400px;display:flex;flex-direction:column;gap:12px}
+.pricing-card li{display:flex;gap:10px;font-size:.95rem}
+.pricing-card li svg{width:19px;height:19px;color:var(--wa);flex:none;margin-top:3px}
+.limit-note{font-size:.88rem;color:var(--terra-deep);background:var(--pink-soft);border-radius:12px;padding:10px 16px;margin-bottom:22px}
+.refund{margin-top:20px;background:var(--pink-soft);border-radius:14px;padding:14px 18px;font-size:.9rem;color:var(--terra-deep)}
+.refund strong{font-weight:800}
+
+/* FAQ */
+.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-list details{background:var(--card);border:1px solid rgba(192,91,69,.14);border-radius:16px;padding:0;overflow:hidden}
+.faq-list summary{list-style:none;cursor:pointer;padding:18px 22px;font-weight:700;font-size:1rem;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";font-family:'Fraunces',serif;font-size:1.4rem;color:var(--terra);flex:none;line-height:1}
+.faq-list details[open] summary::after{content:"–"}
+.faq-list summary:focus-visible{outline:3px solid var(--terra);outline-offset:-3px}
+.faq-body{padding:0 22px 20px;font-size:.94rem;color:var(--ink-soft)}
+.faq-body a{color:var(--terra-deep);font-weight:600}
+
+/* founder note */
+.founder{max-width:640px;margin:56px auto 0;background:var(--card);border-radius:var(--radius);border:1px solid rgba(192,91,69,.14);padding:30px 32px;font-size:.98rem;color:var(--ink-soft)}
+.founder p{margin-bottom:12px}
+.founder .sign{font-family:'Fraunces',serif;font-style:italic;color:var(--terra-deep);font-size:1.05rem}
+
+/* final cta / footer */
+.final{padding:90px 0;text-align:center}
+.final h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:16px}
+.final p{color:var(--ink-soft);max-width:32em;margin:0 auto 30px}
+footer{border-top:1px solid rgba(192,91,69,.14);padding:34px 0 90px;font-size:.85rem;color:var(--ink-soft)}
+.foot-in{display:flex;flex-direction:column;gap:10px}
+.foot-row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot-brand{display:flex;align-items:center;gap:9px;font-weight:800;color:var(--ink)}
+.foot-brand img{width:28px;height:28px}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap}
+.foot-links a{color:var(--ink-soft)}
+
+/* reveal on scroll (hanya konten di bawah lipatan — hero selalu tampil penuh) */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease}
+.reveal.on{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* sticky mobile CTA bar */
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid rgba(192,91,69,.18);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;align-items:center;justify-content:space-between;gap:12px;transform:translateY(110%);transition:transform .3s ease}
+.sticky-cta.show{transform:none}
+.sticky-cta .p{font-size:.82rem;font-weight:700;color:var(--ink)}
+.sticky-cta .p small{display:block;font-weight:600;color:var(--ink-soft);font-size:.72rem}
+@media (max-width:768px){.sticky-cta{display:flex}}
+@media (prefers-reduced-motion: reduce){.sticky-cta{transition:none}}
+
+/* responsive */
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .verdicts{grid-template-columns:1fr;max-width:420px;margin:0 auto}
+  .payer-grid{grid-template-columns:1fr}
+  .payer-phones{flex-wrap:wrap}
+  .stats-in{grid-template-columns:1fr;gap:18px;padding:28px 24px 18px}
+}
+@media (max-width:560px){
+  .steps{grid-template-columns:1fr}
+  .nav-links{display:none}
+  section{padding:56px 0}
+  .pricing-card{padding:36px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="#"><img src="logo-192.png" alt="Logo Jaga Eyang" width="38" height="38">Jaga Eyang</a>
+    <div class="nav-links">
+      <a href="#cara">Cara pakai</a>
+      <a href="#respon">Jenis respon</a>
+      <a href="#anak">Untuk anak</a>
+      <a href="#manfaat">Manfaat</a>
+      <a href="#harga">Harga</a>
+      <a href="#faq">Tanya jawab</a>
+      <a class="btn btn-terra btn-sm" href="#harga">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="width:18px;height:18px;flex:none"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        Langganan
+      </a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Mereka dulu menjaga kita — sekarang giliran kita</span>
+      <h1>Orang tua aman dari penipu, <em>tanpa aplikasi baru</em>.</h1>
+      <p class="lede">Orang tua meneruskan pesan mencurigakan. Kami balas <strong>kurang dari 30 menit</strong>. Kalau bahaya, <strong>Anda langsung tahu</strong>.</p>
+      <div class="hero-cta">
+        <a class="btn btn-terra" href="#harga">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="width:18px;height:18px;flex:none"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          Mulai Langganan
+        </a>
+      </div>
+      <p class="price-note"><strong>Rp 49.000</strong>/bulan · berhenti kapan saja · <strong>bisa bayar dari luar negeri</strong></p>
+      <p class="guarantee">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        Garansi 14 hari — tidak cocok, uang kembali 100%.
+      </p>
+      <p class="official-num">Nomor resmi Jaga Eyang: <strong>0851-6185-7808</strong> — hanya nomor ini.</p>
+    </div>
+
+    <!-- Demo dua HP: percakapan orang tua → notifikasi di HP anak. Statis: terlihat lengkap sejak detik pertama. -->
+    <div class="hero-demo">
+      <div class="demo-col">
+        <div class="phone phone-hero">
+          <div class="phone-screen">
+            <div class="wa-status"><span>11:14</span><span>▲ ▮</span></div>
+            <div class="wa-head">
+              <span class="back">←</span>
+              <span class="wa-ava"><img src="logo-192.png" alt="" width="34" height="34"></span>
+              <div>
+                <div class="wa-name">Jaga Eyang</div>
+                <div class="wa-sub">online</div>
+              </div>
+              <div class="wa-icons">📞 ⋮</div>
+            </div>
+            <div class="wa-chat">
+              <div class="bubble b-out">
+                <span class="fwd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 7l5 5-5 5v-3H5v-4h9V7z"/></svg>Diteruskan</span>
+                Lampiran pembagian bansos kelurahan ABC. <span class="b-link">https://bagi-bagi.example</span>
+                <span class="b-time">11.14</span>
+              </div>
+              <div class="bubble b-in">
+                <span class="tag-line tag-bahaya">⚠️ Bahaya.</span>
+                Jangan dibalas ya Mama, ini tidak benar. Belum dibalas kan ya?
+                <ol class="b-list"><li>Sudah dibalas</li><li>Belum dibalas</li></ol>
+                <span class="b-time">11.14</span>
+              </div>
+              <div class="bubble b-out">
+                Sudah dibalas 😟
+                <span class="b-time">11.15</span>
+              </div>
+              <div class="bubble b-in">
+                Tidak apa-apa, Mama, ini bisa terjadi pada siapa saja. Jangan kirim uang atau data apa pun ya. <strong>Kami kabari anak Mama sekarang, supaya bisa ikut membantu.</strong>
+                <span class="b-time">11.15</span>
+              </div>
+            </div>
+            <div class="wa-input">
+              <div class="wa-field">😊 Ketik pesan… <span style="margin-left:auto">📎 📷</span></div>
+              <div class="wa-mic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V22h2v-3.1A7 7 0 0 0 19 12h-2z"/></svg></div>
+            </div>
+          </div>
+        </div>
+        <p class="demo-cap">HP orang tua</p>
+      </div>
+
+      <div class="demo-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        <span>detik itu juga</span>
+      </div>
+
+      <div class="demo-col">
+        <div class="phone phone-lock">
+          <div class="phone-screen lock-screen">
+            <div class="lock-status"><span>11:15</span><span>▲ ▮</span></div>
+            <div class="lock-clock">11:15</div>
+            <div class="lock-date">Senin, 6 Juli</div>
+            <div class="lock-notif">
+              <div class="notif-head">
+                <span class="notif-app">
+                  <svg viewBox="0 0 24 24" fill="#1fa855" aria-hidden="true"><path d="M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-5 4V5a2 2 0 0 1 2-2z"/></svg>
+                  WHATSAPP
+                </span>
+                <span>sekarang</span>
+              </div>
+              <div class="notif-title">Jaga Eyang</div>
+              <div class="notif-body">🚨 Mama sudah membalas pesan mencurigakan. Tolong hubungi dan pastikan. Kami kirimkan langkah penanganannya…</div>
+            </div>
+            <div class="lock-hint">Geser ke atas untuk membuka</div>
+          </div>
+        </div>
+        <p class="demo-cap">HP Anda — langsung diberi tahu</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STATS STRIP ============ -->
+<div class="stats" aria-label="Fakta penipuan digital di Indonesia">
+  <div class="stats-in">
+    <div class="stat"><b>66%</b><span>orang Indonesia menerima percobaan penipuan setahun terakhir.</span></div>
+    <div class="stat"><b>85%</b><span>penipuan terjadi lewat WhatsApp.</span></div>
+    <div class="stat"><b>&lt;1 jam</b><span>golden time penyelamatan dana menurut OJK — 80% korban melapor lewat dari 12 jam.</span></div>
+  </div>
+  <p class="stats-src">Sumber: GASA &amp; Mastercard, State of Scams in Indonesia 2025 · OJK / Satgas PASTI, 2025.</p>
+</div>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="cara">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker">Untuk orang tua, semudah ini</span>
+      <h2>Cukup satu gerakan yang sudah mereka hafal.</h2>
+      <p>Semua di dalam WhatsApp. Tanpa instalasi, tanpa password.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3>Lihat pesan aneh</h3>
+        <p>Hadiah? Bansos dadakan? Kalau ragu, itu tandanya.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3>Tekan lama pesannya</h3>
+        <p>Pilih <strong>Teruskan</strong> — seperti ke grup keluarga.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3>Teruskan ke Jaga Eyang</h3>
+        <p>Ke nomor resmi <strong>0851-6185-7808</strong> — hanya nomor ini.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h3>Dapat jawaban dari kami</h3>
+        <p><strong>&lt;30 menit</strong>: aman, hati-hati, atau bahaya. Bahasa sederhana.</p>
+      </div>
+    </div>
+    <p class="steps-note reveal"><strong>Itu saja.</strong> Tidak ada langkah lain.</p>
+  </div>
+</section>
+
+<!-- ============ VERDICTS ============ -->
+<section id="respon" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker">Jawaban yang diterima orang tua</span>
+      <h2>Tiga jawaban sederhana. Tanpa istilah teknis.</h2>
+    </div>
+    <div class="verdicts">
+
+      <div class="verdict reveal">
+        <div class="verdict-top">
+          <span class="pill pill-bahaya">Bahaya</span>
+          <p>Penipuan. Kalau terlanjur dibalas, Anda langsung dihubungi.</p>
+        </div>
+        <div class="mini-chat">
+          <div class="bubble b-out">
+            <span class="fwd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 7l5 5-5 5v-3H5v-4h9V7z"/></svg>Diteruskan</span>
+            Lampiran pembagian bansos kelurahan ABC. <span class="b-link">https://bagi-bagi.example</span>
+          </div>
+          <div class="bubble b-in">
+            <span class="tag-line tag-bahaya">⚠️ Bahaya.</span>
+            Jangan dibalas ya Mama, ini tidak benar. Belum dibalas kan ya?
+            <ol class="b-list"><li>Sudah dibalas</li><li>Belum dibalas</li></ol>
+          </div>
+          <div class="bubble b-out">Tidak dibalas</div>
+          <div class="bubble b-in">Siap, sudah benar. Tetap diabaikan saja ya 👍</div>
+        </div>
+      </div>
+
+      <div class="verdict reveal">
+        <div class="verdict-top">
+          <span class="pill pill-hati">Hati-hati</span>
+          <p>Berisiko — sebaiknya dibicarakan dengan keluarga dulu.</p>
+        </div>
+        <div class="mini-chat">
+          <div class="bubble b-out b-img">
+            <div class="shot">
+              <div class="shot-bar"><span>◀</span> FinanKu <svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 2.4 3.3-.5.5 3.3L20.6 9 22 12l-1.4 3-2.4 1.8-.5 3.3-3.3-.5L12 22l-2.4-2.4-3.3.5-.5-3.3L3.4 15 2 12l1.4-3 2.4-1.8.5-3.3 3.3.5L12 2zm-1.2 13.5l5.4-5.4-1.4-1.4-4 4-1.8-1.8-1.4 1.4 3.2 3.2z"/></svg><em>Akun Bisnis</em></div>
+              <div class="shot-chat">
+                <div class="shot-msg">Selamat Bapak/Ibu! 🎉 Anda terpilih mendapatkan limit <b>pinjaman online Rp 25.000.000</b>, bunga ringan, cair hari ini. Balas <b>MAU</b> untuk pencairan.</div>
+              </div>
+            </div>
+            <span class="shot-cap">Ini beneran gak ya? 🤔</span>
+            <span class="b-time">11.14</span>
+          </div>
+          <div class="bubble b-in">
+            <span class="tag-line tag-hati">✋ Hati-hati.</span>
+            Akunnya memang terdaftar, namun karena menawarkan pinjaman online, sebaiknya didiskusikan dengan anak Mama dulu ya.
+          </div>
+        </div>
+      </div>
+
+      <div class="verdict reveal">
+        <div class="verdict-top">
+          <span class="pill pill-aman">Aman</span>
+          <p>Pesan biasa — boleh dibalas seperti biasa.</p>
+        </div>
+        <div class="mini-chat">
+          <div class="bubble b-out">
+            <span class="fwd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 7l5 5-5 5v-3H5v-4h9V7z"/></svg>Diteruskan</span>
+            Jangan lupa ke posyandu siang ini ya bapak ibu.
+          </div>
+          <div class="bubble b-in">
+            <span class="tag-line tag-aman">✅ Aman.</span>
+            Ini himbauan biasa, Mama. Boleh dibalas ya.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAYER / CHILD ============ -->
+<section id="anak" class="payer">
+  <div class="wrap payer-grid">
+    <div class="reveal">
+      <span class="kicker">Untuk Anda yang membayar</span>
+      <h2 class="display" style="font-family:'Fraunces',serif;font-size:clamp(1.7rem,3.2vw,2.4rem);margin-bottom:14px;line-height:1.15">Anda tahu persis apa yang Anda bayar.</h2>
+      <p style="color:var(--ink-soft)">Kami tidak membanjiri Anda dengan notifikasi. Hanya dua jenis pesan:</p>
+      <ul class="payer-list">
+        <li>
+          <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
+          <div>
+            <h4>Notifikasi darurat</h4>
+            <p>Orang tua terlanjur membalas penipuan? Anda langsung tahu — dan kami pandu penanganannya, langkah demi langkah.</p>
+          </div>
+        </li>
+        <li>
+          <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></span>
+          <div>
+            <h4>Laporan ringkas tiap Minggu</h4>
+            <p>Berapa pesan dicek, berapa penipuan dicegah. Satu pesan seminggu.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <div class="payer-phones">
+        <div>
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="wa-status"><span>1:42</span><span>▲ ▮</span></div>
+              <div class="wa-head">
+                <span class="back">←</span>
+                <span class="wa-ava"><img src="logo-192.png" alt="" width="34" height="34"></span>
+                <div><div class="wa-name">Jaga Eyang</div></div>
+              </div>
+              <div class="wa-chat">
+                <div style="align-self:center;background:#fff;border-radius:8px;padding:3px 10px;font-size:.62rem;color:#777;box-shadow:0 1px 1px rgba(0,0,0,.06)">Minggu, 5 Jul 2026</div>
+                <div class="bubble b-in">
+                  <span class="tag-line" style="color:var(--terra-deep)">Laporan minggu ini</span>
+                  Mama mengecek <strong>7 pesan</strong> minggu ini. <strong>2 percobaan penipuan</strong> berhasil dicegah. 💪
+                  <span class="b-time">09.00</span>
+                </div>
+              </div>
+              <div class="wa-input">
+                <div class="wa-field">😊 Ketik pesan…</div>
+                <div class="wa-mic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V22h2v-3.1A7 7 0 0 0 19 12h-2z"/></svg></div>
+              </div>
+            </div>
+          </div>
+          <p class="phone-cap">Laporan mingguan</p>
+        </div>
+        <div>
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="wa-status"><span>1:42</span><span>▲ ▮</span></div>
+              <div class="wa-head">
+                <span class="back">←</span>
+                <span class="wa-ava"><img src="logo-192.png" alt="" width="34" height="34"></span>
+                <div><div class="wa-name">Jaga Eyang</div></div>
+              </div>
+              <div class="wa-chat">
+                <div class="bubble b-in">
+                  <span class="tag-line tag-bahaya">🚨 Mama sudah membalas pesan mencurigakan.</span>
+                  Tolong hubungi Mama sekarang. Kami temani langkahnya:
+                  <ol class="b-list">
+                    <li>Sempat memberi data/OTP? Telepon bank — berikut nomor resminya 👇</li>
+                    <li>Sudah transfer? Balas <strong>BANTU</strong> — kami pandu lapor IASC OJK <strong>menit ini juga</strong></li>
+                    <li>Nomor penipunya kami bantu laporkan ✔</li>
+                  </ol>
+                  <span class="b-time">11.15</span>
+                </div>
+              </div>
+              <div class="wa-input">
+                <div class="wa-field">😊 Ketik pesan…</div>
+                <div class="wa-mic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V22h2v-3.1A7 7 0 0 0 19 12h-2z"/></svg></div>
+              </div>
+            </div>
+          </div>
+          <p class="phone-cap">Notifikasi darurat</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFIT / IMPACT ============ -->
+<section id="manfaat" class="benefit">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker">Untuk Anda yang menjaga dari jauh</span>
+      <h2>Jadilah yang tahu lebih dulu — bukan yang tahu belakangan.</h2>
+      <p>Hanya <strong>14% korban sempat diperingatkan</strong> orang terdekat (GASA &amp; Mastercard 2025). Jaga Eyang membuat Anda bagian dari yang 14% itu.</p>
+    </div>
+
+    <div class="benefit-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <h3>Anda tahu di jam pertama yang krusial</h3>
+        <p>Menurut OJK, peluang dana kembali nyaris habis setelah 1 jam. Kami kabari Anda saat itu juga.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Anda tidak menjaga sendirian</h3>
+        <p>Pengecekan kami yang pegang. Kalau hal buruk terjadi, kami pandu Anda melewatinya.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        </div>
+        <h3>Menjaga, bukan mengawasi</h3>
+        <p>Tanpa menyita HP, tanpa memarahi. Orang tua tetap merasa mampu.</p>
+      </div>
+    </div>
+
+    <p class="benefit-stat reveal">
+      Kami jujur: Jaga Eyang <strong>bukan jaminan</strong>. Tapi sepasang mata tambahan mengurangi peluang penipuan.
+    </p>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="harga">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker">Harga</span>
+      <h2>Satu harga sederhana, semua termasuk.</h2>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="price">Rp 49.000<span class="per"> /bulan</span></div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Berlaku untuk Ayah &amp; Ibu — hingga 2 nomor orang tua</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pemeriksaan pesan tanpa batas</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Balasan &lt;30 menit, tiap hari 07.00–23.00 WIB</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Notifikasi darurat ke WhatsApp Anda</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Pendampingan darurat langkah demi langkah</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Laporan mingguan — semua di WhatsApp</li>
+      </ul>
+      <p class="limit-note">Hanya <strong>30 keluarga pertama</strong> — supaya tiap pesan diperiksa sungguh-sungguh.</p>
+      <div class="pay-steps">
+        <div class="pay-step">
+          <span class="pay-num">1</span>
+          <!-- TODO(founder): ganti # dengan URL produk Mayar publik (mayar.id/...) -->
+          <a class="btn btn-terra" href="#" style="flex:1;justify-content:center">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="width:19px;height:19px;flex:none"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            Bayar &amp; Langganan — Rp 49.000
+          </a>
+        </div>
+        <div class="pay-connector" aria-hidden="true"></div>
+        <div class="pay-step">
+          <span class="pay-num n2">2</span>
+          <p class="pay-desc"><strong>Chat WhatsApp untuk aktivasi</strong> — kirim nomor WA orang tua, perlindungan aktif hari itu juga.</p>
+        </div>
+      </div>
+      <p style="font-size:.78rem;color:var(--ink-soft);margin-top:12px">Pembayaran aman lewat Mayar (mayar.id), gerbang pembayaran berizin OJK — QRIS, transfer, e-wallet, kartu, <strong>termasuk kartu internasional dari luar negeri</strong>. Link pembayaran tidak akan hangus; putuskan kapan pun Anda siap.</p>
+      <!-- Live chat: snippet Crisp sudah disiapkan di bagian paling bawah file ini. -->
+      <div class="refund">
+        <strong>Garansi 14 hari.</strong> Tidak cocok? Chat <strong>“Refund”</strong> di WhatsApp — uang kembali 100%, maksimal 2 hari kerja. Tanpa syarat.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker">Tanya jawab</span>
+      <h2>Hal-hal yang biasanya ditanyakan sebelum mendaftar.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details>
+        <summary>Apakah orang tua saya harus install aplikasi?</summary>
+        <div class="faq-body">Tidak. Semuanya terjadi di WhatsApp yang sudah mereka pakai setiap hari. Tidak ada instalasi, tidak ada akun baru, tidak ada password. Anda pun tidak perlu install apa-apa — laporan dan notifikasi masuk ke WhatsApp Anda.</div>
+      </details>
+      <details>
+        <summary>Apakah pesan orang tua saya dibaca orang?</summary>
+        <div class="faq-body">Ya, dan kami jujur soal ini: pesan yang diteruskan hanya dilihat oleh <strong>satu operator</strong> — orang yang sama yang meneruskannya ke sistem pemeriksaan dan mengembalikan hasilnya. Tidak ada orang lain yang membacanya. Isi pesan <strong>tidak disimpan</strong> setelah pemeriksaan selesai — yang dicatat hanya kategori hasilnya (misalnya "penipuan kurir palsu"). Nomor HP tidak pernah dibagikan ke pihak mana pun. Sesuai UU Pelindungan Data Pribadi 2022, Anda dapat meminta penghapusan seluruh data kapan saja lewat chat.</div>
+      </details>
+      <details>
+        <summary>Apa bedanya Jaga Eyang dengan alat cek penipuan lain?</summary>
+        <div class="faq-body">Kebanyakan alat lain berupa robot — sebagian gratis, umumnya menjawab dalam bahasa Inggris, dan tidak mengabari keluarga. Jaga Eyang berbeda: yang membalas manusia, dalam Bahasa Indonesia yang hangat, dan kalau terjadi hal serius, <strong>Anda langsung tahu</strong> lengkap dengan langkah penanganannya. Yang Anda bayar bukan pengecekan — tapi ketenangan bahwa ada yang menjaga.</div>
+      </details>
+      <details>
+        <summary>Bagaimana kalau orang tua saya sudah terlanjur tertipu?</summary>
+        <div class="faq-body">Anda langsung menerima notifikasi — dan kami tidak melepas Anda dengan daftar tugas. Pesan darurat sudah berisi <strong>daftar nomor resmi bank</strong> untuk blokir kartu &amp; rekening, jadi tidak perlu mencari sendiri saat panik. Kalau sudah terlanjur transfer, balas <strong>BANTU</strong> dan kami pandu pelaporan ke <a href="https://iasc.ojk.go.id" rel="noopener">IASC OJK</a> saat itu juga — <strong>menit-menit pertama paling menentukan</strong> peluang dana tertahan. Nomor penipu juga kami bantu laporkan. Jujur dari kami: tidak ada yang bisa menjamin dana kembali. Justru karena itu, mencegah jauh lebih berharga.</div>
+      </details>
+      <details>
+        <summary>Saya kerja di luar negeri. Bisa langganan untuk orang tua di Indonesia?</summary>
+        <div class="faq-body">Justru Jaga Eyang dibuat untuk Anda. Semuanya lewat WhatsApp, jadi jarak tidak masalah — notifikasi darurat dan laporan mingguan sampai ke Anda di mana pun berada. Pembayaran bisa pakai kartu internasional (Visa/Mastercard) lewat Mayar, tanpa perlu rekening Indonesia.</div>
+      </details>
+      <details>
+        <summary>Bagaimana cara refund?</summary>
+        <div class="faq-body">Garansi 14 hari, tanpa syarat. Cukup chat kata <strong>"Refund"</strong> ke WhatsApp kami — uang kembali 100%, maksimal 2 hari kerja. Tidak ada formulir, tidak ada email, tidak perlu alasan panjang. Dan layanan untuk orang tua tetap berjalan sampai masa 14 hari selesai, lalu kami pamit baik-baik.</div>
+      </details>
+    </div>
+
+    <!-- TODO(founder): begitu ada keluarga pilot pertama, tambahkan 1 testimoni asli (nama depan + kota) di atas kartu founder ini — jangan pakai testimoni rekaan -->
+    <div class="founder reveal">
+      <p>Saya Muthia. Saya membangun Jaga Eyang setelah melihat penipu menyasar orang-orang seperti orang tua kita — sopan, percaya, tidak enak menolak.</p>
+      <p>Setiap pesan kami periksa sungguh-sungguh. Ragu? Chat saja dulu.</p>
+      <p class="sign">— Muthia, pembuat Jaga Eyang</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final" style="padding-top:20px">
+  <div class="wrap reveal">
+    <img src="logo-512.png" alt="Logo Jaga Eyang" style="width:76px;height:76px;margin-bottom:20px">
+    <h2>Mereka dulu menjaga kita.<br>Sekarang giliran kita.</h2>
+    <p>Satu langganan hari ini bisa menyelamatkan tabungan mereka besok.</p>
+    <a class="btn btn-terra" href="#harga">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="width:18px;height:18px;flex:none"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      Langganan Sekarang
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-row">
+      <span class="foot-brand"><img src="logo-192.png" alt="" width="28" height="28">Jaga Eyang</span>
+      <div class="foot-links">
+        <a href="/privasi">Kebijakan Privasi</a>
+        <a href="/syarat">Syarat Layanan</a>
+        <a href="mailto:halo@jagaeyang.com">halo@jagaeyang.com</a>
+      </div>
+    </div>
+    <div class="foot-row">
+      <span>Perlindungan penipuan untuk orang tua, lewat WhatsApp. Nomor resmi: 0851-6185-7808.</span>
+      <span>Layanan resmi pengaduan konsumen OJK: 157 · © 2026 Jaga Eyang</span>
+    </div>
+  </div>
+</footer>
+
+<!-- sticky CTA — mobile saja, muncul setelah hero terlewati -->
+<div class="sticky-cta" id="stickyCta" aria-hidden="true">
+  <span class="p">Jaga Eyang<small>Rp 49rb/bln · garansi 14 hari</small></span>
+  <a class="btn btn-terra btn-sm" href="#harga">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="width:18px;height:18px;flex:none"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+    Langganan
+  </a>
+</div>
+
+<script>
+// reveal on scroll — hanya konten di bawah lipatan; hero tampil penuh tanpa animasi
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// sticky CTA (mobile): muncul setelah hero keluar dari layar
+const hero = document.querySelector('.hero');
+const sticky = document.getElementById('stickyCta');
+if (hero && sticky){
+  const heroIo = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      sticky.classList.toggle('show', !e.isIntersecting);
+      sticky.setAttribute('aria-hidden', e.isIntersecting ? 'true' : 'false');
+    });
+  },{threshold:0});
+  heroIo.observe(hero);
+}
+</script>
+<!-- ============ CRISP LIVE CHAT ============
+TODO(founder): 3 langkah aktivasi —
+1. Buka app.crisp.chat -> Settings -> Website Settings -> Setup instructions -> salin Website ID (format: xxxxxxxx-xxxx-...)
+2. Ganti GANTI_DENGAN_WEBSITE_ID di bawah dengan ID tersebut
+3. Hapus baris "KOMENTAR MULAI" dan "KOMENTAR SELESAI" agar script aktif
+Jangan aktifkan auto-greeting/auto-open di dashboard Crisp — biarkan pengunjung yang membuka chat.
+-->
+<!-- KOMENTAR MULAI
+<script type="text/javascript">
+  window.$crisp=[];window.CRISP_WEBSITE_ID="GANTI_DENGAN_WEBSITE_ID";
+  (function(){var d=document,s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+</script>
+KOMENTAR SELESAI -->
+</body>
+</html>
