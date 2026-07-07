@@ -13,4 +13,3 @@ Landing page statis untuk jagaeyang.com. Tanpa build step.
 ## Sisa TODO sebelum launch
 - [ ] Isi URL produk Mayar di tombol "Bayar & Langganan" (cari `TODO(founder)` di index.html) — menunggu verifikasi Mayar
 - [ ] Aktifkan Crisp: ikuti instruksi di bagian bawah index.html
-- [ ] Baca ulang /privasi dan /syarat — sesuaikan bila ada yang tidak cocok dengan praktik sebenarnya
